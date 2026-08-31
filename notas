@@ -1,0 +1,71 @@
+Objetivo
+Colocar em prática os conceitos aprendidos sobre testes unitários em Next.js 15. Nesta atividade, você irá implementar e testar funcionalidades reais com foco em componentes reutilizáveis, server components e hooks personalizados, usando o modelo do App Router.
+
+Desafio
+Você deverá criar uma aplicação simples de listagem e adição de tarefas, com as seguintes funcionalidades:
+
+Exibir uma lista de tarefas vinda de um arquivo simulado (como se fosse uma API).
+
+Adicionar novas tarefas via formulário controlado.
+
+Contar a quantidade de tarefas usando um hook personalizado.
+
+Escrever testes unitários para os principais elementos.
+
+
+Requisitos
+1. Estrutura da Aplicação
+
+Criar um projeto com Next.js 15 (App Router) e TypeScript.
+
+Criar um Server Component em app/page.tsx que carregue a lista de tarefas.
+
+Criar um Client Component <NovaTarefa /> para adicionar novas tarefas.
+
+Criar um hook useContadorDeTarefas para retornar o número atual de tarefas.
+
+Os dados podem ser armazenados temporariamente em um array local ou simular fetch com Promise.resolve().
+
+
+2. Testes Unitários
+
+Testar o componente <NovaTarefa /> (validação de input, botão e submissão).
+
+Testar o hook useContadorDeTarefas de forma isolada usando renderHook.
+
+Testar a renderização da página com tarefas (sem mock de API externa).
+
+Verificar ao menos:
+
+Renderização correta dos elementos.
+
+Valores retornados pelo hook.
+
+3. Organização do Projeto
+
+Usar a estrutura recomendada com pastas components, hooks, pages, tests
+
+Utilizar Jest e Testing Library para os testes
+
+Garantir cobertura mínima dos fluxos principais.
+
+Entrega
+Crie um repositório no GitHub com os seguintes arquivos:
+
+Código fonte do projeto.
+
+Arquivos de teste.
+
+README com instruções de instalação e execução.
+
+Compartilhe o link do repositório conforme instruções na plataforma.
+
+Dicas
+Use jest.mock para simular módulos, se necessário.
+
+Use os utilitários render, screen, fireEvent e act do @testing-library/react.
+
+Para hooks, utilize renderHook da @testing-library/react.
+
+Pode usar useState e useEffect normalmente dentro dos componentes Client.
+
