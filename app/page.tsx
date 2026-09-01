@@ -6,10 +6,11 @@ export default async function Home() {
 
   return (
     <main>
-      <NovaTarefa/>
-      <ul>
+      <NovaTarefa />
+      <ul className="text-lg bg-white text-black">
         {tarefas.map((t) => (
-          <li key={t.id}>{t.titulo}</li>
+          <li className="m-2 p-2 text-lg border-black border rounded-xl"
+            key={t.id}>{t.titulo}</li>
         ))}
       </ul>
     </main>

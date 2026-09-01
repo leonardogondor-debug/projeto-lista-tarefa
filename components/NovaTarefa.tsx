@@ -6,7 +6,7 @@ import { useContadorDeTarefas } from "../hooks/useContadorDeTarefas";
 export default function NovaTarefa() {
     const [titulo, setTitulo] = useState("");
     const [tarefas, setTarefas] = useState<string[]>([]);
-    const { count, incrementar, decrementar } = useContadorDeTarefas();
+    const { count, incrementar } = useContadorDeTarefas();
 
     const adicionarTarefa = () => {
         if (!titulo.trim()) return;
@@ -16,19 +16,20 @@ export default function NovaTarefa() {
     };
 
     return (
-        <div>
-            <h1>Lista de Tarefas</h1>
-            <input
+        <div className="pt-2 bg-black text-white">
+            <h1 className="m-2 text-2xl">Lista de Tarefas</h1>
+            <input 
+              className="bg-white text-black m-2 p-2 rounded-xl"
               type="text"
               placeholder="Nova tarefa"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
             />
-            <button onClick={adicionarTarefa}>Adicionar</button>
-        <p>Tarefas: {count}</p>
-            <ul>
+            <button className="bg-green-500 hover:bg-green-700 m-2 p-2 rounded-xl" onClick={adicionarTarefa}>Adicionar</button>
+        <p className="m-2 text-xl p-2">Tarefas: {count}</p>
+            <ul className="pt-2 text-lg bg-white text-black">
                 {tarefas.map((t, id) => (
-                    <li key={id}>{t}</li>
+                    <li className="m-2 p-2 text-lg border-black border rounded-xl" key={id}>{t}</li>
                 ))}
             </ul>
         </div>
