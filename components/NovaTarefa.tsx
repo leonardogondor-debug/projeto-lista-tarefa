@@ -10,7 +10,7 @@ export default function NovaTarefa() {
 
     const adicionarTarefa = () => {
         if (!titulo.trim()) return;
-        setTarefas([...tarefas, titulo]);
+        setTarefas([titulo, ...tarefas]);
         setTitulo("");
         incrementar(); 
     };
