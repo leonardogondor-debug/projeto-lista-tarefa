@@ -1,0 +1,72 @@
+Objetivo
+O objetivo desta tarefa é aplicar os conceitos aprendidos sobre Integração Contínua (CI) e Entrega Contínua (CD) utilizando o GitHub Actions para automatizar testes, lint, build e deploy de uma aplicação front-end.
+
+Desafio
+Você deve configurar uma pipeline completa de CI/CD para uma aplicação Next (ou projeto front-end equivalente), contemplando os seguintes estágios:
+
+Validação de Código: rodar ESLint.
+
+Build da Aplicação: verificar se o projeto compila corretamente.
+
+Deploy Automatizado: publicar automaticamente a aplicação no GitHub Pages ou Vercel a cada push na branch main.
+
+Requisitos
+1. Projeto Base
+
+Utilize uma aplicação Next/React criada com Vite, Nextjs ou similar.
+
+A aplicação pode ser nova ou reutilizada de módulos anteriores.
+
+2. Integração Contínua (CI)
+
+Crie um workflow em .github/workflows/main.yml.
+
+O CI deve rodar em push ou pull request para a branch main.
+
+Etapas obrigatórias: 
+
+Instalar dependências (npm ci)
+
+Rodar lint (npm run lint)
+
+Rodar testes (npm run test)
+
+Rodar build (npm run build)
+
+3. Deploy Automatizado (CD)
+
+Escolha uma das opções: 
+
+Vercel (usando token via secrets)
+
+GitHub Pages
+
+Configure um segundo workflow ou inclua no mesmo arquivo.
+
+O deploy deve ocorrer automaticamente após push na branch main.
+
+4. Secrets
+
+Configure variáveis de ambiente no repositório: 
+
+VERCEL_TOKEN, se usar Vercel
+
+GITHUB_TOKEN, se usar GitHub Pages
+
+Entrega
+Publique o projeto no GitHub com os workflows configurados.
+
+Verifique se os workflows estão funcionando corretamente com push e build.
+
+Inclua o link do site publicado (Vercel ou GitHub Pages) no README.md do projeto.
+
+Compartilhe o link do repositório GitHub na plataforma conforme orientações.
+
+Dicas
+Teste sua pipeline antes de enviar.
+
+Use a aba Actions do GitHub para acompanhar a execução.
+
+Não se esqueça de ignorar a pasta node_modules no .gitignore.
+
+Leia os logs das execuções para entender possíveis erros.
