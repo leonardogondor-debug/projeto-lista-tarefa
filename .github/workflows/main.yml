@@ -1,49 +1,52 @@
-name: CI/CD Pipeline
+ name: CI/CD Pipeline
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
-jobs: 
-  build:
-    runs-on: ubuntu-latest
+  on:
+    push:
+      branches: [ "main" ]
+    pull_request:
+      branches: [ "main" ]
+
+
+  jobs: 
+    build:
+      runs-on: ubuntu-latest
    
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      steps:
+        - name: checkout repository
+          uses: actions/checkout@v3
 
-      - name: install dependencies
-        run: npm ci
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18
 
-      - name: Run lint
-        run: npm run list
+        - name: install dependencies
+          run: npm ci
 
-      - name: Run tests
-        run: npm test
+        - name: Run lint
+          run: npm run lint
 
-      - name: Build project
-        run: npm run build
+        - name: Run tests
+          run: npm test
+
+        - name: Build project
+          run: npm run build
  
-  deploy: 
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    deploy: 
+      needs: build
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main'
 
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v3
+      steps:
+        - name: checkout repository
+          uses: actions/checkout@v3
 
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
+        - name: Deploy to Vercel
+          uses: amondnet/vercel-action@v25
+          with:
+            vercel-token: ${{ secrets.VERCEL_TOKEN }}
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+            working-directory: ./
