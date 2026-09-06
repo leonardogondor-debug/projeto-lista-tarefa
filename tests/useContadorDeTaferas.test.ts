@@ -5,13 +5,15 @@ import "@testing-library/jest-dom";
 
 describe("useContadorDeTarefas", () => {
     test("inicia com valor padrao", () => {
-        const { result } = renderHook(() => useContadorDeTarefas());
+        const { result } = renderHook(() => useContadorDeTarefas(4));
         expect(result.current.count).toBe(4);
     });
 
     test("incrementa contador", () => {
-        const { result } = renderHook(() => useContadorDeTarefas());
-        act(() => result.current.incrementar());
+        const { result } = renderHook(() => useContadorDeTarefas(4));
+        act(() => {
+            result.current.incrementar();
+        });
         expect(result.current.count).toBe(5);
     });
 });

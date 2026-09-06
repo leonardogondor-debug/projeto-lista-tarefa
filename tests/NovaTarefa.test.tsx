@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "@jest/globals";
 import "@testing-library/jest-dom";
 import NovaTarefa from "../components/NovaTarefa";
+import { tarefasMock } from "@/lib/tarefas";
 
 describe("NovaTarefa Component", () => {
     test("Arrange: renderiza input e botão", () => {
@@ -17,11 +18,11 @@ describe("NovaTarefa Component", () => {
 
         fireEvent.change(input, { target: { value: "" } });
         fireEvent.click(button);
-        expect(screen.getByText("Tarefas: 0")).toBeTruthy();
+        expect(screen.getByText(`Tarefas: ${tarefasMock.length}`)).toBeTruthy();
 
         fireEvent.change(input, { target: { value: "   " } });
         fireEvent.click(button);
-        expect(screen.getByText("Tarefas: 0")).toBeTruthy();
+        expect(screen.getByText(`Tarefas: ${tarefasMock.length}`)).toBeTruthy();
     });
 
     test("Adiciona nova tarefa", () => {
@@ -34,7 +35,7 @@ describe("NovaTarefa Component", () => {
 
         expect(screen.getByText("testar componente")).toBeTruthy();
 
-        expect(screen.getByText("Tarefas: 1")).toBeTruthy();
+        expect(screen.getByText(`Tarefas: ${tarefasMock.length + 1}`)).toBeTruthy();
 
         expect(input).toHaveProperty("value", "");
     });
