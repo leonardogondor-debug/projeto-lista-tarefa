@@ -3,9 +3,9 @@
 
   on:
     push:
-      branches: [ "main" ]
+      branches: [ "master" ]
     pull_request:
-      branches: [ "main" ]
+      branches: [ "master" ]
 
 
   jobs: 
@@ -37,7 +37,7 @@
     deploy: 
       needs: build
       runs-on: ubuntu-latest
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/master'
 
       steps:
         - name: checkout repository
