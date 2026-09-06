@@ -10,6 +10,20 @@ describe("NovaTarefa Component", () => {
         expect(screen.getByText("Adicionar")).toBeTruthy();
     });
 
+    test("Não adiciona tarefa vazia", () => {
+        render(<NovaTarefa />);
+        const input = screen.getByPlaceholderText("Nova tarefa");
+        const button = screen.getByText("Adicionar");
+
+        fireEvent.change(input, { target: { value: "" } });
+        fireEvent.click(button);
+        expect(screen.getByText("Tarefas: 0")).toBeTruthy();
+
+        fireEvent.change(input, { target: { value: "   " } });
+        fireEvent.click(button);
+        expect(screen.getByText("Tarefas: 0")).toBeTruthy();
+    });
+
     test("Adiciona nova tarefa", () => {
         render(<NovaTarefa />);
         const input = screen.getByPlaceholderText("Nova tarefa");
@@ -19,5 +33,9 @@ describe("NovaTarefa Component", () => {
         fireEvent.click(button);
 
         expect(screen.getByText("testar componente")).toBeTruthy();
+
+        expect(screen.getByText("Tarefas: 1")).toBeTruthy();
+
+        expect(input).toHaveProperty("value", "");
     });
 });
