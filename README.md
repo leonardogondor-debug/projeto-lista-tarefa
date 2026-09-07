@@ -25,7 +25,7 @@ um projeto simples de **Lista de tarefas** desenvolvido com **Next.js**, **React
 
 ## Test
 
-1. Rodar todos os testes em modo interativo
+1. Rodar todos os testes em modo interativo (reexecuta ao salvar arquivo)
    ```bash
    npm test
 
