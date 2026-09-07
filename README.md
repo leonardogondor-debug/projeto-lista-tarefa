@@ -20,6 +20,7 @@ um projeto simples de **Lista de tarefas** desenvolvido com **Next.js**, **React
    npm run dev
 
 4. Acesse no navegador 
+   ```bash
    codigo: http://localhost:3000
 
 ## Test
