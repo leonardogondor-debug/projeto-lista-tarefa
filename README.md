@@ -22,7 +22,7 @@ um projeto simples de **Lista de tarefas** desenvolvido com **Next.js**, **React
 4. Acesse no navegador 
    codigo: http://localhost:3000
 
-## Testes
+## Test
 
 1. Rodar todos os testes em modo interativo
    ```bash
