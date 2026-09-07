@@ -43,7 +43,7 @@
           run: npm ci
 
         - name: Run tests with coverage
-          run: npm test -- --ci --coverage  
+          run: npm test --coverage  
 
     build:
       runs-on: ubuntu-latest
