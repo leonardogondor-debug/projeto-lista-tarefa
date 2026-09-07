@@ -29,7 +29,7 @@
           run: npm run lint
 
         - name: Run tests
-          run: npm test
+          run: npm test -- --ci
 
         - name: Build project
           run: npm run build
