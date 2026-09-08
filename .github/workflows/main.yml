@@ -60,8 +60,9 @@
         
         - name: Clean install dependencies
           run: |
-            rm -rf node_modules
-            npm ci
+            rm -rf node_modules package-lock.json
+            npm cache clean --force
+            npm install
 
         - name: Build project
           run: npm run build
