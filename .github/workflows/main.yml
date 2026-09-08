@@ -58,7 +58,7 @@
             node-version: 18
         
         - name: install dependencies
-          run: npm ci
+          run: npm ci --force
 
         - name: Build project
           run: npm run build
