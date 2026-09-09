@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// @ts-expect-error CSS global import is handled by Next.js at build time.
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,4 +19,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </body>
     </html>
   );
-}
+} 
