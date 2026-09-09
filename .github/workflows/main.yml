@@ -18,7 +18,7 @@
         - name: Setup Node.js
           uses: actions/setup-node@v3
           with:
-            node-version: 20
+            node-version: 24
             cache: 'npm'
 
         - name: install dependencies
@@ -37,7 +37,7 @@
         - name: Setup Node.js
           uses: actions/setup-node@v3
           with:
-            node-version: 20
+            node-version: 24
             cache: 'npm'
         
         - name: install dependencies
@@ -56,7 +56,7 @@
         - name: Setup Node.js
           uses: actions/setup-node@v3
           with:
-            node-version: 20
+            node-version: 24
             cache: 'npm'
         
         - name: Clean install dependencies
@@ -76,7 +76,7 @@
         - name: install node
           uses: actions/setup-node@v4
           with:
-            node-version: 20
+            node-version: 24
             cache: 'npm'
             cache-dependency-path: '**/package-lock.json'
 
@@ -84,7 +84,7 @@
           run: npm install -g vercel@latest
 
         - name: Deploy to Vercel
-          run: vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+          run: vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --confirm
           env:
             VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
             VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
