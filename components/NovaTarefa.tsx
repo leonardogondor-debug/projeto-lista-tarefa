@@ -2,12 +2,16 @@
 
 import { useState } from "react";
 import { useContadorDeTarefas } from "../hooks/useContadorDeTarefas";
-import { tarefasMock } from "../lib/tarefas";
+import { Tarefa } from "../types/tarefa";
 
-export default function NovaTarefa() {
+type Props = {
+    tarefasIniciais: Tarefa[];
+};
+
+export default function NovaTarefa({ tarefasIniciais }: Props) {
     const [titulo, setTitulo] = useState("");
-    const [tarefas, setTarefas] = useState<string[]>(tarefasMock.map(t => t.titulo));
-    const { count, incrementar } = useContadorDeTarefas(tarefasMock.length);
+    const [tarefas, setTarefas] = useState<string[]>(tarefasIniciais.map(t => t.titulo));
+    const { count, incrementar } = useContadorDeTarefas(tarefasIniciais.length);
 
     const adicionarTarefa = (e: React.FormEvent) => {
         e.preventDefault();

@@ -6,7 +6,9 @@ import "@testing-library/jest-dom";
 
 describe("Pagina Principal", () => {
     test("Renderiza lista de tarefas", async () => {
-        render(await Page());
+        const ui = await Page();
+        render(ui);
+        
         expect(screen.getByText("estudar")).toBeTruthy();
         expect(screen.getByText("praticar esportes")).toBeTruthy();
         expect(screen.getByText("jogar games")).toBeTruthy();

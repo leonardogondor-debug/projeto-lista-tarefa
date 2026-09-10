@@ -6,13 +6,13 @@ import { tarefasMock } from "@/lib/tarefas";
 
 describe("NovaTarefa Component", () => {
     test("Arrange: renderiza input e botão", () => {
-        render(<NovaTarefa />);
+        render(<NovaTarefa tarefasIniciais={tarefasMock} />);
         expect(screen.getByPlaceholderText("Nova tarefa")).toBeTruthy();
         expect(screen.getByText("Adicionar")).toBeTruthy();
     });
 
     test("Não adiciona tarefa vazia", () => {
-        render(<NovaTarefa />);
+        render(<NovaTarefa tarefasIniciais={tarefasMock} />);
         const input = screen.getByPlaceholderText("Nova tarefa");
         const button = screen.getByText("Adicionar");
 
@@ -26,7 +26,7 @@ describe("NovaTarefa Component", () => {
     });
 
     test("Adiciona nova tarefa", () => {
-        render(<NovaTarefa />);
+        render(<NovaTarefa tarefasIniciais={tarefasMock} />);
         const input = screen.getByPlaceholderText("Nova tarefa");
         const button = screen.getByText("Adicionar");
 
