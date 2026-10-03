@@ -13,10 +13,10 @@
       runs-on: ubuntu-latest
       steps:
         - name: checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout@v5
 
         - name: Setup Node.js
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v6
           with:
             node-version: 20
             cache: 'npm'
@@ -32,10 +32,10 @@
       needs: lint
       steps:
         - name: checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout@v5
 
         - name: Setup Node.js
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v6
           with:
             node-version: 20
             cache: 'npm'
@@ -44,17 +44,17 @@
           run: npm ci
 
         - name: Run tests with coverage
-          run: npm test --coverage  
+          run: npm test -- --coverage --watchAll=false
 
     build:
       runs-on: ubuntu-latest
       needs: test
       steps:
         - name: checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout@v5
 
         - name: Setup Node.js
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v6
           with:
             node-version: 20
             cache: 'npm'
@@ -68,10 +68,13 @@
     deploy:
       runs-on: ubuntu-latest
       needs: build
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+
 
       steps:
         - name: checkout repository
-          uses: actions/checkout@v3
+          uses: actions/checkout@v5
 
         - name: remove .vercel (windows)
           if: runner.os == 'Windows'
@@ -84,7 +87,7 @@
           run: rm -rf .vercel || true
 
         - name: install node
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v6
           with:
             node-version: 20
             cache: 'npm'
