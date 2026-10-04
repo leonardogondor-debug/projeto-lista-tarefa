@@ -56,19 +56,6 @@ O projeto usa **GitHub Actions** para validar o código e publicar na **Vercel**
 
 No repositório do GitHub, abra a aba **Actions** e clique no workflow **CI/CD Pipeline**. Cada execução mostra o status de cada job (✅ passou, ❌ falhou) e o log completo de cada etapa. Em pull requests, o resultado também aparece na seção de checks, no final da página do PR.
 
-### Jobs do pipeline
-
-Os jobs rodam em sequência: se um falhar, os seguintes não executam.
-
-| Job      | O que faz                                      | Quando roda                 |
-| -------- | ---------------------------------------------- | --------------------------- |
-| `lint`   | Verifica o código com ESLint (`npm run lint`)  | Push e pull request         |
-| `test`   | Roda os testes com cobertura                   | Push e pull request         |
-| `build`  | Gera o build de produção (`npm run build`)     | Push e pull request         |
-| `deploy` | Publica em produção na Vercel                  | **Apenas push na `main`**   |
-
-Para um pull request poder ser aceito, os jobs **`lint`, `test` e `build` devem passar**. O `deploy` não executa em pull requests: a publicação em produção só acontece depois que o código chega à `main` e todos os jobs anteriores passaram.
-
 ### Configuração do deploy
 
 O deploy usa a Vercel CLI e precisa de três *secrets* no repositório (**Settings → Secrets and variables → Actions**):
